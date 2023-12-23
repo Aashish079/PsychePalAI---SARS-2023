@@ -9,10 +9,10 @@ import "../Styles/Sidebar.css";
 
 const Sidebar = () => {
     return (
-        <div className="bg-slate-800 w-2/12 h-full">
+        <div className="w-2/12 h-full bg-supplement_color text-white">
             <div className='h-[20%] logo align-baseline cursor-pointer pt-[3rem]'>
                 <div className="flex justify-center">
-                    <img src={logo} className="rounded-md w-20 h-20" alt="Logo" />
+                    <img src={logo} className="rounded-full w-20 h-20" alt="Logo" />
                 </div>
                 <div className='flex justify-center text-white font-extrabold text-3xl p-8 '>PsychePalAI</div>
             </div>
@@ -30,7 +30,7 @@ const Sidebar = () => {
                             </li>
                             <li className='flex color-white align-middle pb-5 cursor-pointer hover:text-gray-400'>
                                 <img src={account} className="w-[1.25rem]" alt="Account" />
-                                <p className='pl-[1rem]'>Account</p>
+                                <p className='pl-[1rem]'><Link to="/account">Account</Link></p>
                             </li>
                         </ul>
                     </div>
@@ -38,11 +38,11 @@ const Sidebar = () => {
                         <ul>
                             <li className='flex color-white align-middle pb-5 cursor-pointer hover:text-gray-400'>
                                     <img src={support} className="w-[1.25rem]" alt="Support" />
-                                    <p className='pl-[1rem]'>Support</p>
+                                    <p className='pl-[1rem]'><Link to="/support">Support</Link></p>
                             </li>
                             <li className='flex color-white align-middle pb-5 cursor-pointer hover:text-gray-400'>
                                     <img src={logout} className="w-[1.25rem]" alt="Log Out" />
-                                    <p className='pl-[1rem]'>Log Out</p>
+                                    <p className='pl-[1rem]'><Link to="/logout">Log Out</Link></p>
                             </li>
                         </ul>
                     </div>
