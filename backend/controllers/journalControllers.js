@@ -23,7 +23,7 @@ export const createJournal = async (req, res) => {
 //   console.log(req)
   try {
     const journal = new Journal({
-        id: getallJournals.length + 3,
+        id: "01",
         date,
         title,
         content,
@@ -35,6 +35,7 @@ export const createJournal = async (req, res) => {
     const analysis = await analyzeEntry(content);
     console.log("Analysis created with id: ", analysis);
     const analysisdb = new Analysis({
+        entry: journal._id,
         mood: analysis.mood,
         subject: analysis.subject,
         negative: analysis.negative,
