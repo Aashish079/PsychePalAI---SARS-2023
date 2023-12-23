@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import { Journal } from "../models/Journal.models.js";
+import { analyzeEntry } from "./ai.js";
 
 export const getallJournals = async (req, res) => {
 //   const user_id = req.user._id;
@@ -21,14 +22,24 @@ export const createJournal = async (req, res) => {
 //   console.log(req)
   try {
     const journal = new Journal({
-        id: getallJournals.length + 1,
+        id: getallJournals.length + 3,
         date,
         title,
         content,
     })
-    journal.save();
-    console.log("Journal created with id: ", journalournal.title)
-    res.status(200).json(newJournal);
+    await journal.save();
+    console.log("Journal created with id: ", journal.title)
+    // res.status(200).json(journal);
+    console.log("content", content);
+    const analysis = await analyzeEntry(content);
+    console.log("Analysis created with id: ", analysis);
+    const analysisdb = new Analysis({
+        mood: analysis.mood,
+        subject: analysis.subject,
+        negative: analysis.negative,
+        summary: analysis.summary,
+    });
+    analysisdb.save();
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
