@@ -1,0 +1,83 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90%;
+}
+
+.add-task-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.add-task-container input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.add-task-container button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.tasks-container {
+  padding: 1rem;
+  overflow-y: auto;
+}
+
+.task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.task .text {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+
+.task .buttons {
+  display: flex;
+  align-items: center;
+}
+
+.task .buttons button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #ccc;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+
+.task .buttons button:hover {
+  background-color: #eee;
+}
+
+.task .buttons button:active {
+  background-color: #ccc;
+}
+
+.task .buttons button.delete {
+  background-color: red;
+  color: white;
+}
+
+.task .buttons button.delete:hover {
+  background-color: #cc0000;
+}
+
+.task .buttons button.delete:active {
+  background-color: red;
+}
