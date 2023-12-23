@@ -10,6 +10,10 @@ const JournalSchema = new mongoose.Schema({
         required: true,
         default: Date.now
     },
+    title:{
+        type: String,
+        default: Date.now + " Journal Entry"
+    },
     content:{
         type:String,
         required:true,
