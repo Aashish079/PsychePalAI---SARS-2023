@@ -25,9 +25,9 @@ const MyPrompts = () => {
   // setTasks([...journalTitles]);
   useEffect(() => {
     if (!journals) return;
-    setTasks(journals.map((journal) => journal.title));
+    setTasks(journals.map((journal) => journal));
     console.log("journals");
-  }, [tasks.length, journals]);
+  }, [journals]);
   // Creating function handleAddTask to handle add user input
   const handleAddTask = () => {
     // Checking if user input is empty
@@ -111,7 +111,10 @@ const MyPrompts = () => {
                   className="edit-task w-full"
                 />
               ) : (
-                <p>{task}</p>
+                <div>
+                <div className="font-bold">{task.title}</div>
+                <p>{task.content}</p>
+                </div>
               )}
 
               <div className="buttons">
