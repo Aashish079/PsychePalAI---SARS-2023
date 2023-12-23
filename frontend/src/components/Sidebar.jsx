@@ -1,5 +1,5 @@
 import { Link, Outlet } from "react-router-dom";
-import logo from '../assets/sars.jpg';
+import logo from '../assets/psychepal.webp';
 import pencil from '../assets/icons/pencil.svg';
 import trash from '../assets/icons/trash.svg';
 import account from '../assets/icons/account.svg';
@@ -11,9 +11,9 @@ const Sidebar = () => {
     return (
         <div className="bg-slate-800 w-2/12 h-full">
             <div className="side-menu pl-7 pt-7 w-full h-full">
-                <div className='flex align-middle h-auto cursor-pointer'>
-                    <img src={logo} className="w-[3rem] rounded-full" alt="Logo" />
-                    <h1 className='text-white font-extrabold text-3xl pl-1'>SARS-2023</h1>
+                <div className='flex align-baseline h-auto cursor-pointer'>
+                    <img src={logo} className=" rounded-md w-20 h-20" alt="Logo" />
+                    <div className='text-white font-extrabold text-l pl-1 p-8 '>PsychePalAI</div>
                 </div>
                 <div className='navbar pt-[5rem] pl-[1rem] flex-col text-white text-2xl'>
                     <div className='list'>
