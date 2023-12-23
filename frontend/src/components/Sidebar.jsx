@@ -10,12 +10,14 @@ import "../Styles/Sidebar.css";
 const Sidebar = () => {
     return (
         <div className="bg-slate-800 w-2/12 h-full">
-            <div className="side-menu pl-7 pt-7 w-full h-full">
-                <div className='flex align-baseline h-auto cursor-pointer'>
-                    <img src={logo} className=" rounded-md w-20 h-20" alt="Logo" />
-                    <div className='text-white font-extrabold text-l pl-1 p-8 '>PsychePalAI</div>
+            <div className="side-menu pl-7 pt-7 pb-8 w-full h-full">
+                <div className='logo align-baseline cursor-pointer'>
+                    <div className="flex justify-center">
+                        <img src={logo} className="rounded-md w-20 h-20" alt="Logo" />
+                    </div>
+                    <div className='flex justify-center text-white font-extrabold text-3xl p-8 '>PsychePalAI</div>
                 </div>
-                <div className='navbar pt-[5rem] pl-[1rem] flex-col text-white text-2xl'>
+                <div className='w-full h-[80%] navbar pt-[5rem] pl-[1rem] flex-col text-white text-2xl'>
                     <div className='list'>
                         <ul>
                             <li className='flex color-white align-middle pb-5 cursor-pointer hover:text-gray-400'>
