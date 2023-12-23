@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import { Journal } from "../models/Journal.models.js";
 import { analyzeEntry } from "./ai.js";
+import { Analysis } from "../models/Analysis.models.js";
 
 export const getallJournals = async (req, res) => {
 //   const user_id = req.user._id;
@@ -38,6 +39,8 @@ export const createJournal = async (req, res) => {
         subject: analysis.subject,
         negative: analysis.negative,
         summary: analysis.summary,
+        counsel: analysis.counsel,
+        sentimentScore: analysis.sentimentScore
     });
     analysisdb.save();
   } catch (err) {

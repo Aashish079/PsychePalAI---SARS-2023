@@ -1,25 +1,11 @@
-import { required } from "joi";
 import mongoose from "mongoose";
 
 const AnalysisSchema = new mongoose.Schema(
   {
-    id: {
-      type: String,
-      required: true,
-      unique: true,
-    },
     entry: {
       type: String,
       required: true,
       ref: "Journal",
-    },
-    userId: {
-      type: String,
-      required: true,
-    },
-    user: {
-      type: String,
-      ref: "User",
     },
     mood: {
       type: String,
@@ -33,9 +19,16 @@ const AnalysisSchema = new mongoose.Schema(
     summary: { 
         type: String 
     },
+    counsel: { 
+        type: String 
+    },
     sentimentScore: { 
         type: Number
-    }
+    },
+    user: {
+      type: String,
+      ref: "User",
+    },
   },
   { timestamps: true }
 );

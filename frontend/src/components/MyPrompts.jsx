@@ -27,13 +27,13 @@ const MyPrompts = () => {
     if (!journals) return;
     setTasks(journals.map((journal) => journal.title));
     console.log("journals");
-  }, [journals]);
+  }, [tasks.length, journals]);
   // Creating function handleAddTask to handle add user input
   const handleAddTask = () => {
     // Checking if user input is empty
 
     if (newTask === "") {
-      alert("Please enter a task");
+      alert("Please enter your journal entry");
       return;
     }
 
@@ -133,5 +133,4 @@ const MyPrompts = () => {
     </div>
   );
 };
-
 export default MyPrompts;
