@@ -2,18 +2,20 @@ import { useEffect, useState } from "react";
 import "../Styles/MyPrompts.css";
 import useJournals from "../hooks/useJournals.js";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
-import React from 'react'
-import Speech from 'react-text-to-speech'
+import Speech from "react-text-to-speech";
+import useAnalysis from "../hooks/useAnalysis.js";
 
 const MyPrompts = () => {
   // Creating tasks, newTask and editTask states for user input
   // Creating tasks for saving tasks
-  const { journals, error, isLoading } = useJournals();
+  const { data: journal, error, isLoading } = useJournals();
+  const { data: analysis, erroranalysis, isLoadinganalysis } = useAnalysis();
   const [parent, enableAnimations] = useAutoAnimate({
     duration: 400,
   });
 
   const [tasks, setTasks] = useState([]);
+  const [prompts, setPrompts] = useState([]);
   // console.log(tasks);
 
   // Saving instance of new tasks
@@ -21,13 +23,18 @@ const MyPrompts = () => {
   // Saving instance of edit tasks
   const [editTask, setEditTask] = useState(null);
   // Creating prompts for tasks;
-  const [prompts, setPrompts] = useState(["Prompt 1", "Prompt 2", "Prompt 3"]);
   // setTasks([...journalTitles]);
   useEffect(() => {
-    if (!journals) return;
-    setTasks(journals.map((journal) => journal));
-    console.log("journals");
-  }, [journals]);
+    if (!journal) return;
+    setTasks([...journal]);
+    console.log({ journal });
+  }, [journal]);
+
+  useEffect(() => {
+    if (!analysis) return;
+    setPrompts([...analysis]);
+    console.log({ analysis });
+  }, [analysis]);
   // Creating function handleAddTask to handle add user input
   const handleAddTask = () => {
     // Checking if user input is empty
@@ -78,7 +85,9 @@ const MyPrompts = () => {
     setTasks(newTasks);
     setEditTask(null);
   };
-
+  useEffect(() => {
+    console.log({ prompts });
+  }, [prompts]);
   return (
     <div className="main w-10/12 h-full bg-content_background">
       <div className="add-task-container">
@@ -94,12 +103,14 @@ const MyPrompts = () => {
             }
           }}
         />
-        <button onClick={handleAddTask} className="submit-btn">Submit</button>
+        <button onClick={handleAddTask} className="submit-btn">
+          Submit
+        </button>
       </div>
       <div className="tasks-container" ref={parent}>
         {tasks.map((task, index) => (
           <div
-            key={task}
+            key={task.id}
             className="bor border-2 border-gray-200 p-2 rounded-xl m-2"
           >
             <div key={index} className="task">
@@ -112,8 +123,8 @@ const MyPrompts = () => {
                 />
               ) : (
                 <div>
-                <div className="font-bold">{task.title}</div>
-                <p>{task.content}</p>
+                  <div className="font-bold">{task.title}</div>
+                  <p>{task.content}</p>
                 </div>
               )}
 
@@ -127,8 +138,17 @@ const MyPrompts = () => {
               </div>
             </div>
             <div className="response p-6">
-              <p>Response: </p>
-              <p>{prompts[index]} <Speech text= {prompts[index]} /></p>
+              <p>Suggestion: </p>
+              <p>
+                {prompts.filter((prompt) => prompt.entry === task._id)[0]
+                  ?.counsel || "No response yet"}
+                <Speech text={prompts.filter((prompt) => prompt.entry === task._id)[0]
+                  ?.counsel || "No response yet"} />
+              </p>
+            </div>
+            <div className="response p-6">
+              <p>sentimentScore:{prompts.filter((prompt) => prompt.entry === task._id)[0]
+                  ?.sentimentScore || "0"} </p>
             </div>
           </div>
         ))}

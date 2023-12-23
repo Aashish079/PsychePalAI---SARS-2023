@@ -23,14 +23,14 @@ export const createJournal = async (req, res) => {
 //   console.log(req)
   try {
     const journal = new Journal({
-        id: "01",
+        id: "04",
         date,
         title,
         content,
     })
     await journal.save();
     console.log("Journal created with id: ", journal.title)
-    // res.status(200).json(journal);
+    res.status(200).json(journal);
     console.log("content", content);
     const analysis = await analyzeEntry(content);
     console.log("Analysis created with id: ", analysis);
