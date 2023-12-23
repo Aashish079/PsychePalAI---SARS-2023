@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "../Styles/MyPrompts.css";
 import useJournals from "../hooks/useJournals.js";
 import { useAutoAnimate } from "@formkit/auto-animate/react";
+import React from 'react'
+import Speech from 'react-text-to-speech'
 
 const MyPrompts = () => {
   // Creating tasks, newTask and editTask states for user input
@@ -123,7 +125,7 @@ const MyPrompts = () => {
             </div>
             <div className="response p-6">
               <p>Response: </p>
-              <p>{prompts[index]}</p>
+              <p>{prompts[index]} <Speech text= {prompts[index]} /></p>
             </div>
           </div>
         ))}
