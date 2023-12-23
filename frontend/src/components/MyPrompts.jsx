@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import "./Main.css";
+import { useState } from "react";
+import "../Styles/MyPrompts.css";
 
-const Main = () => {
+const MyPrompts = () => {
   // Creating tasks, newTask and editTask states for user input
   // Creating tasks for saving tasks
   const [tasks, setTasks] = useState([]);
@@ -108,4 +108,4 @@ const Main = () => {
   );
 };
 
-export default Main;
+export default MyPrompts;

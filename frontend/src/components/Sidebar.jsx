@@ -1,11 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
-import logo from './assets/sars.jpg';
-import pencil from './assets/icons/pencil.svg';
-import trash from './assets/icons/trash.svg';
-import account from './assets/icons/account.svg';
-import support from './assets/icons/support.svg';
-import logout from './assets/icons/power.svg';
-import "./Sidebar.css";
+import logo from '../assets/sars.jpg';
+import pencil from '../assets/icons/pencil.svg';
+import trash from '../assets/icons/trash.svg';
+import account from '../assets/icons/account.svg';
+import support from '../assets/icons/support.svg';
+import logout from '../assets/icons/power.svg';
+import "../Styles/Sidebar.css";
 
 const Sidebar = () => {
     return (

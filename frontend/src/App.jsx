@@ -1,7 +1,6 @@
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Sidebar from "./Sidebar";
-import Main from "./Main";
+import Sidebar from "./components/Sidebar";
+import MyPrompts from "./components/MyPrompts";
 import Trash from "./Trash";
 
 function App() {
@@ -11,10 +10,8 @@ function App() {
         <Sidebar />
         <Routes>
           <Route path="/">
-            <Route index element={<Main />} />
+            <Route index element={<MyPrompts />} />
             <Route path="trash" element={<Trash />} />
-            {/* <Route path="contact" element={<Contact />} />
-            <Route path="*" element={<NoPage />} /> */}
           </Route>
         </Routes>
       </BrowserRouter>
