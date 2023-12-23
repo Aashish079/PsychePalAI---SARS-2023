@@ -81,3 +81,12 @@
 .task .buttons button.delete:active {
   background-color: red;
 }
+
+.bor {
+  border-color: #ccc;
+}
+
+.submit-btn {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

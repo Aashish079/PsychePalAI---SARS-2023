@@ -45,7 +45,7 @@ const MyPrompts = () => {
     }
 
     // Adding user input to the list
-    setTasks([newTask, ...tasks]);
+    setTasks([...tasks, newTask]);
 
     // Clearing user input
     setNewTask("");
@@ -80,7 +80,7 @@ const MyPrompts = () => {
   };
 
   return (
-    <div className="main w-10/12 h-full">
+    <div className="main w-10/12 h-full bg-content_background">
       <div className="add-task-container">
         <input
           type="text"
@@ -94,13 +94,13 @@ const MyPrompts = () => {
             }
           }}
         />
-        <button onClick={handleAddTask}>Submit</button>
+        <button onClick={handleAddTask} className="submit-btn">Submit</button>
       </div>
       <div className="tasks-container" ref={parent}>
         {tasks.map((task, index) => (
           <div
             key={task}
-            className="border-2 border-gray-300 p-2 rounded-xl m-2"
+            className="bor border-2 border-gray-200 p-2 rounded-xl m-2"
           >
             <div key={index} className="task">
               {editTask === index ? (
@@ -108,7 +108,7 @@ const MyPrompts = () => {
                   type="text"
                   value={newTask}
                   onChange={(e) => setNewTask(e.target.value)}
-                  className="edit-task w-full"
+                  className="edit-task w-full p-3"
                 />
               ) : (
                 <div>
