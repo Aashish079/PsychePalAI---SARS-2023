@@ -2,10 +2,13 @@ import express from 'express';
 import dotenv from 'dotenv';
 import connectDb from './db/db.js';
 import JournalRoutes from './routes/journals.js';
+import cors from 'cors';
 
 dotenv.config();
+
 const port = process.env.PORT || 8080;
 const app = express();
+app.use(cors());
 app.use(express.json())
 
 app.use('/api/journals', JournalRoutes);
