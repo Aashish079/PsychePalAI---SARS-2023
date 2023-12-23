@@ -2,12 +2,13 @@ import mongoose from "mongoose";
 import { Journal } from "../models/Journal.models.js";
 
 export const getallJournals = async (req, res) => {
-  // const user_id = req.user._id;
-  console.log(req.user);
+//   const user_id = req.user._id;
+//   console.log(req.user);
 
   try {
-    const journals = await Journal.find({ user_id }).sort({ createdAt: -1 }); // Returns all journals in the database in an array
+    const journals = await Journal.find({}).sort({ createdAt: -1 }); // Returns all journals in the database in an array
     res.status(200).json(journals);
+    return journals;
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
@@ -15,12 +16,18 @@ export const getallJournals = async (req, res) => {
 
 //CRUD Operations
 export const createJournal = async (req, res) => {
-  const { date, title, content } = req.body;
-  const userId = req.user._id;
-  console.log(req)
+  const { date, title, content, userId } = req.body;
+//   const userId = req.user._id;
+//   console.log(req)
   try {
-    const newJournal = await Journal.create({ date, title, content, userId });
-    newJournal.save();
+    const journal = new Journal({
+        id: getallJournals.length + 1,
+        date,
+        title,
+        content,
+    })
+    journal.save();
+    console.log("Journal created with id: ", journalournal.title)
     res.status(200).json(newJournal);
   } catch (err) {
     res.status(404).json({ message: err.message });
