@@ -4,8 +4,8 @@ import { analyzeEntry } from "./ai.js";
 import { Analysis } from "../models/Analysis.models.js";
 
 export const getallJournals = async (req, res) => {
-//   const user_id = req.user._id;
-//   console.log(req.user);
+  //   const user_id = req.user._id;
+  //   console.log(req.user);
 
   try {
     const journals = await Journal.find({}).sort({ createdAt: -1 }); // Returns all journals in the database in an array
@@ -18,32 +18,33 @@ export const getallJournals = async (req, res) => {
 
 //CRUD Operations
 export const createJournal = async (req, res) => {
-  const { date, title, content, userId } = req.body;
-//   const userId = req.user._id;
-//   console.log(req)
+  const { id, date, title, content, userId } = req.body;
+  //   const userId = req.user._id;
+  //   console.log(req)
   try {
     const journal = new Journal({
-        id: "04",
-        date,
-        title,
-        content,
-    })
+      id,
+      date,
+      title,
+      content,
+    });
     await journal.save();
-    console.log("Journal created with id: ", journal.title)
-    res.status(200).json(journal);
+    console.log("Journal created with id: ", journal.title);
     console.log("content", content);
     const analysis = await analyzeEntry(content);
     console.log("Analysis created with id: ", analysis);
     const analysisdb = new Analysis({
-        entry: journal._id,
-        mood: analysis.mood,
-        subject: analysis.subject,
-        negative: analysis.negative,
-        summary: analysis.summary,
-        counsel: analysis.counsel,
-        sentimentScore: analysis.sentimentScore
+      entry: journal._id,
+      mood: analysis.mood,
+      subject: analysis.subject,
+      negative: analysis.negative,
+      summary: analysis.summary,
+      counsel: analysis.counsel,
+      sentimentScore: analysis.sentimentScore,
     });
-    analysisdb.save();
+    await analysisdb.save();
+    console.log(journal, analysisdb);
+    res.status(200).json({ journal, analysisdb });
   } catch (err) {
     res.status(404).json({ message: err.message });
   }
